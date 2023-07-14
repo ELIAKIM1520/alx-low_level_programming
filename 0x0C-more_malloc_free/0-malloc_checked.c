@@ -1,31 +1,29 @@
-#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-/**
- * create_array - create an array of characters 
- *
- * @size: an input for the size of the array in int
- * @c: to store the strings of character
- *
- * Return: a pointer to the base character c
- */
-char *create_array(unsigned int size, char C)
+
+void* malloc_checked(size_t size)
 {
-	size_t i;
-	char *ptr;
-	if (size == 0)
-	{
-		return (NULL);
-	}
-	ptr = malloc(sizeof(char) * size);
-	if (ptr == NULl)
-	{
-		return (NULL);
-	}
-	for (i = 0; i < size; i++)
-	{
-		ptr[i] = c;
-	}
-	return (ptr);
+    void* ptr = malloc(size);
+    if (ptr == NULL) {
+        printf("malloc failed! Terminating process with status value 98.\n");
+        exit(98);
+    }
+    return ptr;
 }
 
+int main()
+{
+    // Example usage of malloc_checked
+    int* arr = malloc_checked(10 * sizeof(int));
+    
+    // Use the allocated memory
+    for (int i = 0; i < 10; i++) {
+        arr[i] = i;
+    }
+    
+    // Free the allocated memory
+    free(arr);
+    
+    return 0;
+}
 

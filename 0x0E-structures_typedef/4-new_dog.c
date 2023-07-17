@@ -54,3 +54,41 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	return (n_dog);
 }
+
+/**
+ * _strLen - Get length of a string
+ *
+ * @str: A string
+ *
+ * Return: Length of string
+ */
+
+int _strLen(char *str)
+{
+	int i = 0;
+
+	while (str[i])
+		i++;
+
+	return (i);
+}
+
+/**
+ * fillMem - Copy string literal to allocated memory
+ *
+ * @str: String literal
+ *
+ * @strLen: @str length
+ *
+ * @dest: The allocated memory
+ */
+
+void fillMem(char *str, int strLen, char *dest)
+{
+	int i;
+
+	for (i = 0; i < strLen; i++)
+		dest[i] = str[i];
+
+	dest[i] = '\0';
+}
